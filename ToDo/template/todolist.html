@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+
+</head>
+
+<body>
+
+
+    <style>
+        form {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+    .button {
+    display: block; 
+    margin: 0 auto; 
+    margin-top: 10px;
+    width: 15%;
+    height: 40px;
+    border-radius: 10%;
+    background-color:green;
+    color: whitesmoke;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.button:hover{
+    background-color: red;
+    color: black;
+    transition: 1s;
+}
+
+        fieldset {
+            width: 50%;
+            background-color: antiquewhite;
+        }
+        .container {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+}
+ 
+            table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: left;
+        } 
+        a{
+            text-decoration: none;
+        }
+  </style>
+
+    <div class="container">
+        <fieldset>
+            <legend>ToDO List</legend>
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    <td>
+                        <tr>
+                            {{ fm.as_table }}
+                        </tr>
+                    </td>
+                </table>
+
+                <input type="submit" value="Save" class="button">
+            </form>
+        </fieldset>
+    </div> <br> <br>
+</body>
+
+
+
+<table>
+    <tr>
+        <th>ID </th>
+        <th>Subject</th>
+        <th>Description</th>
+        <th>Task Assign To</th>
+        <th>Task Complete By</th>
+        <th>Task Complete Date</th>
+        <th class="2">Action</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.subject }}</td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.task_Assign_by }}</td>
+        <td>{{ i.task_complete_to }}</td>
+        <td>{{ i.Complete_By }}</td>
+        <td>
+            <button class=""><a href="{% url 'Update' i.id %}">Update</a></button>
+            <button class=""><a href="{% url 'Delete' i.id %}">Delete</a></button>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+
+
+</html>

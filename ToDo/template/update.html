@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        form {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        .button {
+            display: block;
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 15%;
+            height: 40px;
+            border-radius: 10%;
+            background-color: green;
+            color: whitesmoke;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .button:hover {
+            background-color: red;
+            color: black;
+            transition: 1s;
+        }
+
+        fieldset {
+            width: 50%;
+            /* background-color: antiquewhite; */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            /* horizontally center */
+            align-items: center;
+            /* vertically center */
+        }
+
+        .result {
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+
+        .update {
+            margin-top: 10px;
+            border-radius: 10%;
+            background-color: orange;
+            color: whitesmoke;
+            font-size: 15px;
+        }
+
+        .delete {
+            margin-top: 10px;
+            border-radius: 10%;
+            background-color: red;
+            color: whitesmoke;
+            font-size: 15px;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <marquee behavior="scroll" direction="right">
+        <h1>Update The Data</h1>
+    </marquee>
+    <div class="container">
+        <fieldset>
+            <legend>ToDO List</legend>
+            <form action="" method="post">
+                {% csrf_token %}
+                <table>
+                    <td>
+                        <tr>
+                            {{ fm.as_table }}
+                        </tr>
+                    </td>
+                </table>
+
+                <input type="submit" value="Save" class="button">
+            </form>
+        </fieldset>
+    </div>
+</body>
+
+</html>
